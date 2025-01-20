@@ -1,11 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.firebase.appdistribution)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
     namespace = "com.rkapps.devsapp1"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.rkapps.devsapp1"
@@ -21,6 +23,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            firebaseAppDistribution {
+                //releaseNotesFile="/path/to/releasenotes.txt"
+                //testers="ali@example.com, bri@example.com, cal@example.com"
+                groups = "QA"
+            }
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
